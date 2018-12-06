@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Welcome to bitbaso!"
 date:   2018-12-06 13:07:32 +0100
 categories: jekyll update
 ---
