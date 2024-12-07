@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Se ejecuta en cada push a la rama principal (main)
+      - master # Se ejecuta en cada push a la rama principal (main)
 
 jobs:
   deploy:
@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Usa la versión de Node.js que prefieras (16 es solo un ejemplo)
+          node-version: '16' # Usa la versión de Node.js que prefieras (16 es solo un ejemplo)
 
       # Paso 3: Instalar dependencias
       - name: Install dependencies
@@ -29,13 +29,13 @@ jobs:
 
       # Paso 4: Construir el proyecto SvelteKit
       - name: Build project
-        run: npm run build  # Este comando generará los archivos estáticos en la carpeta 'build'
+        run: npm run build # Este comando generará los archivos estáticos en la carpeta 'build'
 
       # Paso 5: Subir los archivos generados (el artefacto)
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './build'  # Asegúrate de que la ruta apunta a la carpeta generada por SvelteKit
+          path: './build' # Asegúrate de que la ruta apunta a la carpeta generada por SvelteKit
 
       # Paso 6: Desplegar a GitHub Pages
       - name: Deploy to GitHub Pages
