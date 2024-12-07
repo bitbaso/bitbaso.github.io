@@ -7,6 +7,9 @@ on:
 
 jobs:
   deploy:
+    permissions:
+      contents: write # Permiso necesario para escribir en el repositorio
+      id-token: write # Permiso necesario para generar un ID Token
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
