@@ -9,6 +9,7 @@ jobs:
   deploy:
     permissions:
       contents: write # Permiso necesario para escribir en el repositorio
+      pages: write # Permiso necesario para desplegar en GitHub Pages
       id-token: write # Permiso necesario para generar un ID Token
     environment:
       name: github-pages
