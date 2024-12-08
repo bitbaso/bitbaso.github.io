@@ -117,13 +117,12 @@
   }
 </style>
 
-<canvas bind:this={canvas} class="bg-gradient-to-r from-stone-900 to-slate-200"></canvas>
+<canvas bind:this={canvas} class="bg-gradient-to-b from-stone-900 to-slate-500"></canvas>
 
 <!-- Contenedor de texto con posición relativa, que se coloca sobre el canvas -->
 <div class="relative z-10 flex flex-col items-center justify-center pt-16 mt-64 mb-64 pb-6">
-  <div class="flex items-center justify-center">
-    <div class="rounded-xl bg-gradient-to-b from-green-600 to-slate-700 pr-5 pl-5 pt-1 pb-1 font-bold text-6xl text-white">b</div>
-    <h1 class="text-6xl font-bold text-white drop-shadow-lg">itbaso</h1>
+  <div class="flex items-center justify-center">    
+    <h1 class="text-6xl font-bold text-white drop-shadow-lg">bitbaso</h1>
   </div>    
   
   <div class="mt-2 flex items-center">
