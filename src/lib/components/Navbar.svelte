@@ -14,7 +14,7 @@
     };
   </script>
   
-  <nav class="bg-stone-900 py-4 text-white fixed w-full top-0 left-0 z-30 border-b-[1px] border-slate-400">
+  <nav class="bg-stone-900 py-4 text-white fixed w-full top-0 left-0 z-30 border-b-[1px] border-slate-600">
     <div class="container mx-auto flex justify-between items-center px-4">
       <!-- Logo -->
       <a href="/" class="flex items-center hover:text-gray-300">

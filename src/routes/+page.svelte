@@ -86,7 +86,7 @@
 
   onMount(() => {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.3;  // Altura del canvas a 30% de la altura de la ventana
+    canvas.height = window.innerHeight;  // Altura del canvas a 30% de la altura de la ventana
     ctx = canvas.getContext("2d");
   
     initPoints();
@@ -94,7 +94,7 @@
   
     const resizeHandler = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight * 0.3; // Reajustamos el canvas cuando se redimensiona
+      canvas.height = window.innerHeight; // Reajustamos el canvas cuando se redimensiona
       initPoints();
     };
   
@@ -112,7 +112,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 30vh;  /* El canvas ocupa el 30% de la altura de la ventana */
+    height: 100%;  /* El canvas ocupa el 30% de la altura de la ventana */
     z-index: -1; /* El canvas se sitúa debajo del contenido */
   }
 </style>
@@ -120,7 +120,7 @@
 <canvas bind:this={canvas} class="bg-gradient-to-r from-stone-900 to-slate-200"></canvas>
 
 <!-- Contenedor de texto con posición relativa, que se coloca sobre el canvas -->
-<div class="relative z-10 flex flex-col items-center justify-center pt-16 mt-5 pb-6">
+<div class="relative z-10 flex flex-col items-center justify-center pt-16 mt-64 mb-64 pb-6">
   <div class="flex items-center justify-center">
     <div class="rounded-xl bg-gradient-to-b from-green-600 to-slate-700 pr-5 pl-5 pt-1 pb-1 font-bold text-6xl text-white">b</div>
     <h1 class="text-6xl font-bold text-white drop-shadow-lg">itbaso</h1>
@@ -128,7 +128,7 @@
   
   <div class="mt-2 flex items-center">
     <div class=" pr-2">
-      <h2 class="text-white pl-20">{displayText}</h2>
+      <h2 class="pl-20">{displayText}</h2>
     </div>
     <div>
       <a href="https://github.com/bitbaso" target="_blank" title="github bitbaso">
