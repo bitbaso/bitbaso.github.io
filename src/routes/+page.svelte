@@ -93,6 +93,23 @@
 
   $: type(); // Inicia la escritura cuando el componente se monta
 
+  let quotes = [
+    "“Programs must be written for people to read, and only incidentally for machines to execute.” – Harold Abelson",
+    "“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” – Martin Fowler",
+    "“Code is like humor. When you have to explain it, it’s bad.” – Cory House",
+    "“First, solve the problem. Then, write the code.” – John Johnson",
+    "“Clean code always looks like it was written by someone who cares.” – Robert C. Martin",
+    "“Make it work, make it right, make it fast.” – Kent Beck",
+    "“The KISS principle reminds us to aim for simplicity in our code, avoiding unnecessary complexity.” – Anonymous",
+    "“SOLID principles guide us to write code that is scalable, maintainable, and easy to understand.” – Robert C. Martin"
+];
+    
+    let randomQuote = "";
+
+    const getRandomQuote = () => {
+        randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    };
+
   onMount(() => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight; // Altura del canvas a 30% de la altura de la ventana
@@ -108,6 +125,9 @@
     };
 
     window.addEventListener("resize", resizeHandler);
+
+    getRandomQuote();
+
 
     return () => {
       window.removeEventListener("resize", resizeHandler);
@@ -129,7 +149,7 @@
 <canvas bind:this={canvas} class="bg-gradient-to-b from-stone-900 to-slate-500"></canvas>
 
 <!-- Contenedor de texto con posición relativa, que se coloca sobre el canvas -->
-<div class="relative z-10 flex flex-col items-center justify-center pt-16 mt-64 mb-64 pb-6">
+<div class="relative z-10 flex flex-col items-center justify-center mt-64 mb-64 pb-6">
   <div class="flex items-center justify-center">    
     <h1 class="text-6xl font-bold text-white drop-shadow-lg">bitbaso</h1>
   </div>    
@@ -151,6 +171,13 @@
     </a>
   </div>
   </div>
+</div>
+
+<div class="h-full w-full bg-gray-400 rounded-md bg-clip-padding 
+backdrop-filter backdrop-blur-sm bg-opacity-60 border border-gray-100">
+  {#if randomQuote}
+    <div class="quote-box mt-4 mb-4 m-2 text-white font-semibold">{randomQuote}</div>
+  {/if}
 </div>
 
 
