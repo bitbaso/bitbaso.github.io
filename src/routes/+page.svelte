@@ -190,56 +190,27 @@ const updateQuote = () => {
     </svg>
   </div>
 </div>
-<div class="bg-white pt-14">
-  <!-- Contenido del div blanco -->
-  <div class="h-30 flex items-center justify-center">   
+<div class="bg-white pt-14 p-10">
+  <h2 class="text-5xl font-bold mb-12">GITHUB REPOSITORIES</h2>
+  <a href="https://github.com/bitbaso/Molde" title="Molde github"><h3 class="text-3xl font-extrabold text-gray-800 mb-6 mt-3">Molde</h3></a>
+  <p class="text-lg text-gray-600 leading-relaxed">Molde is an experimental project designed to simplify the creation and management of files using JSON configuration and Handlebars templates. This tool allows users to generate, modify, and copy files dynamically based on custom templates. By leveraging the power of Handlebars templating, Molde enables flexible and efficient file creation workflows, making it ideal for developers who need to automate repetitive tasks or integrate complex file structures into their projects.</p>
+  <a href="https://github.com/bitbaso/Arindu" title="Arindu github"><h3 class="text-3xl font-extrabold text-gray-800 mb-6 mt-8">Arindu</h3></a>
+  <p class="text-lg text-gray-600 leading-relaxed">Arindu is an experimental project aimed at optimizing MySQL databases by archiving data. It helps to lighten database tables by moving historical or less frequently accessed data to archive storage, significantly improving table performance and query speed. This project is particularly useful for applications with large datasets, where table bloat can slow down operations. By archiving data intelligently, Arindu ensures that your MySQL databases remain fast and responsive even as the volume of data grows.</p>
+  <a href="https://github.com/bitbaso/MySqlCodeCreator" title="MySqlCodeCreator github"><h3 class="text-3xl font-extrabold text-gray-800 mb-6 mt-8">MySqlCodeCreator</h3></a>
+  <p class="text-lg text-gray-600 leading-relaxed">MySqlCodeCreator is an experimental tool that automatically generates Data Transfer Object (DTO) files from MySQL database tables using templates. It reads the structure of the tables and creates DTO files in the desired format, streamlining the development process. This project eliminates the need for manual coding of DTOs, making it faster and more efficient to work with database-driven applications. With the use of customizable templates, developers can tailor the output to fit their specific needs, ensuring seamless integration between their database and application layers.</p>
+</div>
+<!-- Onda con semicírculos -->
+<div class="inset-x-0 bottom-0">
+  <svg class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 100 1440 320">
+    <path fill="#000000" fill-opacity="1" d="M0,256 Q360,192 720,256 Q1080,320 1440,256 L1440,320 L0,320 Z"></path>
+  </svg>
+</div>
+
+
+<div class="h-30 flex items-center justify-center">   
   {#if randomQuote}
     <div class="quote-box pt-2 m-2 text-black text-xl font-semibold {fade ? 'fade-out' : ''}">
       {randomQuote}
     </div>
   {/if}
   </div>
-</div>
-<!-- Onda con semicírculos -->
-<div class="inset-x-0 bottom-0">
-  <svg class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path fill="#000000" fill-opacity="1" d="M0,256 Q360,192 720,256 Q1080,320 1440,256 L1440,320 L0,320 Z"></path>
-  </svg>
-</div>
-
-
-
-
-
-<div class="relative bg-slate-600">
-  <div class="bg-slate-500 pt-1 pb-2 text-white ">  
-    <div class="p-4">
-      <h3 class="font-bold">Section 1</h3>
-      <p>This is the first section. Now there is no parallax effect, but the content is styled with a nice design!</p>
-    </div>    
-</div>
-<div class=" bg-slate-600 mt-2 mb-2 ">
-  <div class="bg-slate-500 pt-1 pb-2 text-white ">  
-    <div class="p-4">
-      <h3 class="font-bold">Section 1</h3>
-      <p>This is the first section. Now there is no parallax effect, but the content is styled with a nice design!</p>
-    </div>    
-  </div>
-</div>
-  <div class=" bg-slate-600 mt-2 mb-2 ">
-    <div class="bg-slate-500 pt-1 pb-2 text-white ">  
-      <div class="p-4">
-        <h3 class="font-bold">Section 1</h3>
-        <p>This is the first section. Now there is no parallax effect, but the content is styled with a nice design!</p>
-      </div>    
-  </div>
-</div>
-  <div class=" bg-slate-600 mt-2 mb-2 ">
-    <div class="bg-slate-500 pt-1 pb-2 text-white ">  
-      <div class="p-4">
-        <h3 class="font-bold">Section 1</h3>
-        <p>This is the first section. Now there is no parallax effect, but the content is styled with a nice design!</p>
-      </div>    
-  </div>
-</div>
-</div>
