@@ -190,7 +190,7 @@ const updateQuote = () => {
     </svg>
   </div>
 </div>
-<div class="bg-white pt-14 p-10">
+<div class="bg-white pt-14 pr-10 pl-10">
   <h2 class="text-5xl font-bold mb-12">GITHUB REPOSITORIES</h2>
   <a href="https://github.com/bitbaso/Molde" title="Molde github"><h3 class="text-3xl font-extrabold text-gray-800 mb-6 mt-3">Molde</h3></a>
   <p class="text-lg text-gray-600 leading-relaxed">Molde is an experimental project designed to simplify the creation and management of files using JSON configuration and Handlebars templates. This tool allows users to generate, modify, and copy files dynamically based on custom templates. By leveraging the power of Handlebars templating, Molde enables flexible and efficient file creation workflows, making it ideal for developers who need to automate repetitive tasks or integrate complex file structures into their projects.</p>
@@ -201,16 +201,18 @@ const updateQuote = () => {
 </div>
 <!-- Onda con semicírculos -->
 <div class="inset-x-0 bottom-0">
-  <svg class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 100 1440 320">
-    <path fill="#000000" fill-opacity="1" d="M0,256 Q360,192 720,256 Q1080,320 1440,256 L1440,320 L0,320 Z"></path>
+  <svg class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#22c55e" fill-opacity="1" d="M0,256 Q360,192 720,256 Q1080,320 1440,256 L1440,320 L0,320 Z"></path>
   </svg>
+</div>
+<div class="bg-gradient-to-b from-[#22c55e] to-[#5fb346] pt-14 p-10">
+  <div class="h-30 flex items-center justify-center">   
+    {#if randomQuote}
+      <div class="quote-box pt-2 m-2 text-black text-xl font-semibold {fade ? 'fade-out' : ''}">
+        {randomQuote}
+      </div>
+    {/if}
+    </div>
 </div>
 
 
-<div class="h-30 flex items-center justify-center">   
-  {#if randomQuote}
-    <div class="quote-box pt-2 m-2 text-black text-xl font-semibold {fade ? 'fade-out' : ''}">
-      {randomQuote}
-    </div>
-  {/if}
-  </div>
