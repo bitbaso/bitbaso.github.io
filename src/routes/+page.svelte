@@ -160,7 +160,7 @@ const updateQuote = () => {
   }
 </style>
 
-<canvas bind:this={canvas} class="bg-gradient-to-b from-stone-900 to-slate-500"></canvas>
+<canvas bind:this={canvas} class="bg-gradient-to-b from-[#00c6ff] to-[#7b2ff7]"></canvas>
 
 <!-- Contenedor de texto con posición relativa, que se coloca sobre el canvas -->
 <div class="relative z-10 flex flex-col items-center justify-center mt-64 mb-64 pb-6">
@@ -170,7 +170,7 @@ const updateQuote = () => {
   
   <div class="mt-2 flex items-center">
     <div class=" pr-2">
-      <h2 class="pl-20 text-white">{descriptionText}</h2>
+      <h2 class="pl-20 text-white text-lg">{descriptionText}</h2>
     </div>
     <div>
       <a href="https://github.com/bitbaso" target="_blank" title="github bitbaso">
