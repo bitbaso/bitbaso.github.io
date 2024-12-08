@@ -29,11 +29,11 @@ jobs:
 
       # Paso 3: Instalar dependencias
       - name: Install dependencies
-        run: npm install
+        run: yarn install
 
       # Paso 4: Construir el proyecto SvelteKit
       - name: Build project
-        run: npm run build # Este comando generará los archivos estáticos en la carpeta 'build'
+        run: yarn build # Este comando generará los archivos estáticos en la carpeta 'build'
 
       # Paso 5: Subir los archivos generados (el artefacto)
       - name: Upload Artifact
