@@ -180,14 +180,30 @@ const updateQuote = () => {
   </div>
 </div>
 
-<div class="h-full w-full bg-gray-400 rounded-md bg-clip-padding 
-backdrop-filter backdrop-blur-sm bg-opacity-60 border border-gray-100">
+<div class="relative bg-[#5b697d]">
+  <div class=" h-40 flex items-center justify-center text-white">
+  </div>
+  <!-- Onda con semicírculos -->
+  <div class="absolute inset-x-0 bottom-0">
+    <svg class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#ffffff" fill-opacity="1" d="M0,256 Q360,192 720,256 Q1080,320 1440,256 L1440,320 L0,320 Z"></path>
+    </svg>
+  </div>
+</div>
+<div class="bg-white">
+  <!-- Contenido del div blanco -->
+  <div class="h-64 flex items-center justify-center">
+   
   {#if randomQuote}
-    <div class="quote-box mt-4 mb-4 m-2 text-white font-semibold {fade ? 'fade-out' : ''}">
+    <div class="quote-box mt-4 mb-4 m-2 text-black text-xl font-semibold {fade ? 'fade-out' : ''}">
       {randomQuote}
     </div>
   {/if}
+  </div>
 </div>
+
+
+
 
 
 <div class="relative bg-slate-600">
