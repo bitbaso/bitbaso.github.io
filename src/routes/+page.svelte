@@ -104,11 +104,16 @@
     "“SOLID principles guide us to write code that is scalable, maintainable, and easy to understand.” – Robert C. Martin"
 ];
     
-    let randomQuote = "";
+let randomQuote = quotes[0];
+let fade = false;
 
-    const getRandomQuote = () => {
-        randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    };
+const updateQuote = () => {
+  fade = true; // Activar animación de salida
+  setTimeout(() => {
+    randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    fade = false; // Activar animación de entrada
+  }, 500); // Sincronizar con la duración de la animación
+};
 
   onMount(() => {
     canvas.width = window.innerWidth;
@@ -126,10 +131,10 @@
 
     window.addEventListener("resize", resizeHandler);
 
-    getRandomQuote();
-
+    const interval = setInterval(updateQuote, 10000); // Cambiar cita cada 10 segundos    
 
     return () => {
+      clearInterval(interval); // Limpiar intervalo al desmontar el componente
       window.removeEventListener("resize", resizeHandler);
     };
   });
@@ -143,6 +148,15 @@
     width: 100%;
     height: 100%;  /* El canvas ocupa el 30% de la altura de la ventana */
     z-index: -1; /* El canvas se sitúa debajo del contenido */
+  }
+
+  .quote-box {
+    transition: opacity 0.5s ease-in-out; /* Efecto de transición suave */
+    opacity: 1;
+  }
+
+  .quote-box.fade-out {
+    opacity: 0; /* Desaparecer */
   }
 </style>
 
@@ -176,7 +190,9 @@
 <div class="h-full w-full bg-gray-400 rounded-md bg-clip-padding 
 backdrop-filter backdrop-blur-sm bg-opacity-60 border border-gray-100">
   {#if randomQuote}
-    <div class="quote-box mt-4 mb-4 m-2 text-white font-semibold">{randomQuote}</div>
+    <div class="quote-box mt-4 mb-4 m-2 text-white font-semibold {fade ? 'fade-out' : ''}">
+      {randomQuote}
+    </div>
   {/if}
 </div>
 
