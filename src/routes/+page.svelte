@@ -2,36 +2,45 @@
   import { onMount, tick } from "svelte";
   import { assets } from '$app/paths';
 
-
   let canvas;
   let ctx;
   let points = [];
   const maxPoints = 100;
-  
+
   class Point {
-    constructor(x, y) {
+    constructor(x, y, index) {
       this.x = x;
       this.y = y;
       this.vx = Math.random() * 2 - 1;
       this.vy = Math.random() * 2 - 1;
+      this.index = index; // Índice único para alternar colores
     }
-  
+
     update() {
       this.x += this.vx;
       this.y += this.vy;
-  
+
       if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
       if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
     }
-  
+
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = "#ffffff";
+
+      // Alternar entre rojo, negro y verde según el índice
+      if (this.index % 3 === 0) {
+        ctx.fillStyle = "#ff0000"; // Rojo
+      } else if (this.index % 3 === 1) {
+        ctx.fillStyle = "#000000"; // Negro
+      } else {
+        ctx.fillStyle = "#00ff00"; // Verde
+      }
+
       ctx.fill();
     }
   }
-  
+
   function connectPoints() {
     for (let i = 0; i < points.length; i++) {
       for (let j = i + 1; j < points.length; j++) {
@@ -40,66 +49,66 @@
           ctx.beginPath();
           ctx.moveTo(points[i].x, points[i].y);
           ctx.lineTo(points[j].x, points[j].y);
-          ctx.strokeStyle = `rgba(0, 170, 255, ${1 - distance / 100})`;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 100})`; // Color blanco
           ctx.stroke();
         }
       }
     }
   }
-  
+
   function initPoints() {
     points = [];
     for (let i = 0; i < maxPoints; i++) {
       const x = Math.random() * canvas.width;
       const y = Math.random() * canvas.height;
-      points.push(new Point(x, y));
+      points.push(new Point(x, y, i)); // Pasar índice único a cada punto
     }
   }
-  
+
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+
     points.forEach((point) => {
       point.update();
       point.draw();
     });
-  
+
     connectPoints();
-  
+
     requestAnimationFrame(animate);
   }
-  
+
   let text = "Open source solutions";
-  let displayText = "";
+  let descriptionText = "";
   let i = 0;
 
-  const delay = 100;  // Tiempo en milisegundos entre cada letra
+  const delay = 100; // Tiempo en milisegundos entre cada letra
 
   const type = async () => {
     while (i < text.length) {
-      await new Promise(resolve => setTimeout(resolve, delay));  // Espera antes de escribir la siguiente letra
-      displayText += text[i++];
+      await new Promise(resolve => setTimeout(resolve, delay)); // Espera antes de escribir la siguiente letra
+      descriptionText += text[i++];
     }
   };
 
-  $: type();  // Inicia la escritura cuando el componente se monta
+  $: type(); // Inicia la escritura cuando el componente se monta
 
   onMount(() => {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;  // Altura del canvas a 30% de la altura de la ventana
+    canvas.height = window.innerHeight; // Altura del canvas a 30% de la altura de la ventana
     ctx = canvas.getContext("2d");
-  
+
     initPoints();
     animate();
-  
+
     const resizeHandler = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight; // Reajustamos el canvas cuando se redimensiona
       initPoints();
     };
-  
+
     window.addEventListener("resize", resizeHandler);
-  
+
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
@@ -127,7 +136,7 @@
   
   <div class="mt-2 flex items-center">
     <div class=" pr-2">
-      <h2 class="pl-20">{displayText}</h2>
+      <h2 class="pl-20 text-white">{descriptionText}</h2>
     </div>
     <div>
       <a href="https://github.com/bitbaso" target="_blank" title="github bitbaso">
