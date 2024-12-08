@@ -1,6 +1,7 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
   import { assets } from '$app/paths';
+
 
   let canvas;
   let ctx;
@@ -68,9 +69,21 @@
     requestAnimationFrame(animate);
   }
   
-  let paralaxy = 0;
+  let text = "Open source solutions";
+  let displayText = "";
+  let i = 0;
 
-  // Detecta el scroll de la página
+  const delay = 100;  // Tiempo en milisegundos entre cada letra
+
+  const type = async () => {
+    while (i < text.length) {
+      await new Promise(resolve => setTimeout(resolve, delay));  // Espera antes de escribir la siguiente letra
+      displayText += text[i++];
+    }
+  };
+
+  $: type();  // Inicia la escritura cuando el componente se monta
+
   onMount(() => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight * 0.3;  // Altura del canvas a 30% de la altura de la ventana
@@ -87,14 +100,8 @@
   
     window.addEventListener("resize", resizeHandler);
   
-    // Actualiza el paralaje en cada scroll
-    window.addEventListener('scroll', () => {
-      paralaxy = window.scrollY;
-    });
-  
     return () => {
       window.removeEventListener("resize", resizeHandler);
-      window.removeEventListener('scroll', () => {});
     };
   });
 </script>
@@ -113,7 +120,7 @@
 <canvas bind:this={canvas} class="bg-gradient-to-r from-stone-900 to-slate-200"></canvas>
 
 <!-- Contenedor de texto con posición relativa, que se coloca sobre el canvas -->
-<div class="relative z-10 flex flex-col items-center justify-center pt-16 mt-5">
+<div class="relative z-10 flex flex-col items-center justify-center pt-16 mt-5 pb-2">
   <div class="flex items-center justify-center">
     <div class="rounded-xl bg-gradient-to-b from-green-600 to-slate-700 pr-5 pl-5 pt-1 pb-1 font-bold text-6xl text-white">b</div>
     <h1 class="text-6xl font-bold text-white drop-shadow-lg">itbaso</h1>
@@ -121,7 +128,7 @@
   
   <div class="mt-2 flex items-center">
     <div class=" pr-2">
-      <h2 class="text-white pl-20">Open source solutions</h2>
+      <h2 class="text-white pl-20">{displayText}</h2>
     </div>
     <div>
       <a href="https://github.com/bitbaso" target="_blank" title="github bitbaso">
@@ -138,22 +145,36 @@
   </div>
 </div>
 
-<!-- Contenedor con varios divs con parallax -->
-<div class="relative z-10">
-  <div class="parallax-item" style="--paralaxy: {paralaxy}">
-    <h2 class="section-title">Section 1</h2>
-    <p>This is the first section with parallax effect. Scroll down to see the effect!</p>
+
+<div class="relative bg-slate-600">
+  <div class="bg-slate-500 pt-1 pb-2 text-white ">  
+    <div class="p-4">
+      <h3 class="font-bold">Section 1</h3>
+      <p>This is the first section. Now there is no parallax effect, but the content is styled with a nice design!</p>
+    </div>    
+</div>
+<div class=" bg-slate-600 mt-2 mb-2 ">
+  <div class="bg-slate-500 pt-1 pb-2 text-white ">  
+    <div class="p-4">
+      <h3 class="font-bold">Section 1</h3>
+      <p>This is the first section. Now there is no parallax effect, but the content is styled with a nice design!</p>
+    </div>    
   </div>
-  <div class="parallax-item" style="--paralaxy: {paralaxy}">
-    <h2 class="section-title">Section 2</h2>
-    <p>This is the second section with more content. The parallax effect makes it feel like the content is floating!</p>
+</div>
+  <div class=" bg-slate-600 mt-2 mb-2 ">
+    <div class="bg-slate-500 pt-1 pb-2 text-white ">  
+      <div class="p-4">
+        <h3 class="font-bold">Section 1</h3>
+        <p>This is the first section. Now there is no parallax effect, but the content is styled with a nice design!</p>
+      </div>    
   </div>
-  <div class="parallax-item" style="--paralaxy: {paralaxy}">
-    <h2 class="section-title">Section 3</h2>
-    <p>Keep scrolling to experience the smooth parallax transition on more sections!</p>
+</div>
+  <div class=" bg-slate-600 mt-2 mb-2 ">
+    <div class="bg-slate-500 pt-1 pb-2 text-white ">  
+      <div class="p-4">
+        <h3 class="font-bold">Section 1</h3>
+        <p>This is the first section. Now there is no parallax effect, but the content is styled with a nice design!</p>
+      </div>    
   </div>
-  <div class="parallax-item" style="--paralaxy: {paralaxy}">
-    <h2 class="section-title">Section 4</h2>
-    <p>Final section with parallax. The effect should still be visible as you continue scrolling!</p>
-  </div>
+</div>
 </div>
