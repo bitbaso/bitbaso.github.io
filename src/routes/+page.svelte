@@ -73,7 +73,7 @@
   // Detecta el scroll de la página
   onMount(() => {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.3;  // El canvas ocupa solo el 30% de la altura
+    canvas.height = window.innerHeight * 0.3;  // Altura del canvas a 30% de la altura de la ventana
     ctx = canvas.getContext("2d");
   
     initPoints();
@@ -81,7 +81,7 @@
   
     const resizeHandler = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight * 0.3;
+      canvas.height = window.innerHeight * 0.3; // Reajustamos el canvas cuando se redimensiona
       initPoints();
     };
   
@@ -101,76 +101,45 @@
 
 <style>
   canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: fixed;  /* El canvas permanece fijo en la parte superior */
+    position: absolute;  /* El canvas será absoluto para quedar debajo de otros elementos */
     top: 0;
     left: 0;
-    z-index: -1; /* Asegura que el canvas quede debajo de otros elementos */
-  }
-
-  :global(body, html) {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: auto; /* Permite el scroll */
-  }
-
-  .content-container {
-    position: relative;
-    min-height: 200vh; /* Esto garantiza suficiente contenido para scroll */
-    padding-top: 30vh; /* Esto asegura que el contenido comienza debajo del canvas */
-  }
-
-  .parallax-item {
-    position: relative;
-    top: 0;
-    transition: transform 0.1s ease-out;
-    transform: translateY(calc(var(--paralaxy) * 0.5px)); /* Movimiento del parallax */
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .section-title {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 50px;
-  }
-
-  /* Estilos del encabezado */
-  .absolute {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-  }
-
-  .absolute .flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 30vh;  /* El canvas ocupa el 30% de la altura de la ventana */
+    z-index: -1; /* El canvas se sitúa debajo del contenido */
   }
 </style>
 
 <canvas bind:this={canvas} class="bg-gradient-to-r from-stone-900 to-slate-200"></canvas>
 
-<div class="absolute">
-  <div class="flex items-center">
+<!-- Contenedor de texto con posición relativa, que se coloca sobre el canvas -->
+<div class="relative z-10 flex flex-col items-center justify-center pt-16 mt-5">
+  <div class="flex items-center justify-center">
     <div class="rounded-xl bg-gradient-to-b from-green-600 to-slate-700 pr-5 pl-5 pt-1 pb-1 font-bold text-6xl text-white">b</div>
     <h1 class="text-6xl font-bold text-white drop-shadow-lg">itbaso</h1>
   </div>    
-  <h2 class="mt-4 pl-20">Open source solutions</h2>
+  
+  <div class="mt-2 flex items-center">
+    <div class=" pr-2">
+      <h2 class="text-white pl-20">Open source solutions</h2>
+    </div>
+    <div>
+      <a href="https://github.com/bitbaso" target="_blank" title="github bitbaso">
+          <img src={`${assets}/github-mark-white.png`} width="20px" alt="bitbaso github" />
+      </a>    
+  </div>
+  <div class="ml-4">
+    <a href="mailto:bitbaso@gmail.com" target="_blank" title="bitbaso email" class="text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+      </svg>      
+    </a>
+  </div>
+  </div>
 </div>
 
 <!-- Contenedor con varios divs con parallax -->
-<div class="content-container">
+<div class="relative z-10">
   <div class="parallax-item" style="--paralaxy: {paralaxy}">
     <h2 class="section-title">Section 1</h2>
     <p>This is the first section with parallax effect. Scroll down to see the effect!</p>
