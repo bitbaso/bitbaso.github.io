@@ -60,7 +60,7 @@
     points = [];
     for (let i = 0; i < maxPoints; i++) {
       const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height;
+      const y = Math.random() * (canvas.height * 0.7);
       points.push(new Point(x, y, i)); // Pasar índice único a cada punto
     }
   }
@@ -180,8 +180,8 @@ const updateQuote = () => {
   </div>
 </div>
 
-<div class="relative bg-[#5b697d]">
-  <div class=" h-40 flex items-center justify-center text-white">
+<div class="relative bg-transparent">
+  <div class=" h-20 flex items-center justify-center text-white">
   </div>
   <!-- Onda con semicírculos -->
   <div class="absolute inset-x-0 bottom-0">
@@ -190,16 +190,21 @@ const updateQuote = () => {
     </svg>
   </div>
 </div>
-<div class="bg-white">
+<div class="bg-white pt-14">
   <!-- Contenido del div blanco -->
-  <div class="h-64 flex items-center justify-center">
-   
+  <div class="h-30 flex items-center justify-center">   
   {#if randomQuote}
-    <div class="quote-box mt-4 mb-4 m-2 text-black text-xl font-semibold {fade ? 'fade-out' : ''}">
+    <div class="quote-box pt-2 m-2 text-black text-xl font-semibold {fade ? 'fade-out' : ''}">
       {randomQuote}
     </div>
   {/if}
   </div>
+</div>
+<!-- Onda con semicírculos -->
+<div class="inset-x-0 bottom-0">
+  <svg class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#000000" fill-opacity="1" d="M0,256 Q360,192 720,256 Q1080,320 1440,256 L1440,320 L0,320 Z"></path>
+  </svg>
 </div>
 
 
